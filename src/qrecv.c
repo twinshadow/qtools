@@ -7,9 +7,11 @@
 #include <mqueue.h>
 
 void printHelp(char *name) {
-	fprintf(stderr, "Usage of %s:\n", name);
-	fprintf(stderr, "\t%s QUEUE\n\n", name);
-	fprintf(stderr, "Send each line of stdin to POSIX message queue 'QUEUE'\n");
+	fprintf(stderr, "Usage of %s:\n\n", name);
+	fprintf(stderr, "    %s [OPTIONS] QUEUE\n\n", name);
+	fprintf(stderr, "  -h:\tprint this help\n");
+	fprintf(stderr, "  -e:\texit when the queue empties\n");
+	fprintf(stderr, "\nReceive and print messages from POSIX message queue 'QUEUE'\n");
 }
 
 int main(int argc, char* argv[]) {
@@ -67,8 +69,7 @@ int main(int argc, char* argv[]) {
 	mq_getattr(q, &attr);
 	char *msg = (char *)calloc(attr.mq_msgsize, sizeof(char));
 
-	int i = 0;
-	for(;i!=1;){
+	for(;;){
 		if(mq_receive(q, msg, attr.mq_msgsize, &prio) == -1){
 			switch(errno){
 			case EBADF:
@@ -85,7 +86,7 @@ int main(int argc, char* argv[]) {
 				break;
 			case EAGAIN:
 				if(exitEmpty != 0){
-					i = 1;
+					goto leave;
 				}
 				continue;
 			}
@@ -93,6 +94,7 @@ int main(int argc, char* argv[]) {
 		}
 		printf("%d\t%s\n", prio, msg);
 	}
+leave:
 	free(msg);
 	mq_close(q);
 	return 0;
