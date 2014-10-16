@@ -1,0 +1,24 @@
+.TH QRM 1 "16 Oct 2014"
+.SH NAME
+qrm \- Remove POSIX message queue
+.SH SYNOPSIS
+.B qrm
+[-h]
+.I QUEUE
+.SH DESCRIPTION
+.B qrm
+is a command to remove a POSIX message queue on a Linux system.
+.B qrm
+takes one argument, a queue name
+.I QUEUE\fP.
+It must start with "/", like a path.
+.SS OPTIONS
+.TP
+.B \-h
+Print online help.
+.SH SEE ALSO
+qmk(1), qsend(1), qrecv(1), mq_overview(7)
+.SH BUGS
+Probably.
+.SH AUTHORS
+Hank Donnay <hank@code42.com>

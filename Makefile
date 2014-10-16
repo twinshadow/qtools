@@ -1,4 +1,4 @@
-bins = qmk qsend qrecv
+bins = qmk qsend qrecv qrm
 
 all: $(bins)
 	@
