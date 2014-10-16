@@ -1,0 +1,43 @@
+.TH QRECV 1 "16 Oct 2014"
+.SH NAME
+qrecv \- Recieve messages from POSIX message queue
+.SH SYNOPSIS
+.B qrecv
+[-h|-e]
+.I QUEUE
+.SH DESCRIPTION
+.B qrecv
+is a command to recieve messages from a POSIX message queue on a Linux system.
+Each message is printed to
+.I STDOUT
+formatted as
+.P
+.nf
+<PRIORITY>\\t<MESSAGE>\\n
+.fi
+.P
+.B qrecv
+takes one argument, a queue name
+.I QUEUE.
+It must start with "/", like a path.
+.P
+By default,
+.B qrecv
+will read messages from
+.I QUEUE
+until interrupted.
+.SS OPTIONS
+.TP
+.B \-h
+Print online help.
+.TP
+.B \-e
+Exit when
+.I QUEUE
+empties.
+.SH SEE ALSO
+qrm(1), qsend(1), qmk(1), mq_overview(7)
+.SH BUGS
+Probably.
+.SH AUTHORS
+Hank Donnay <hank@code42.com>
