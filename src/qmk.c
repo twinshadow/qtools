@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
 			break;
 		case EEXIST:
 			fprintf(stderr, "queue '%s' already exists.\n", queueName);
-			break;
+			exit(3);
 		case ENAMETOOLONG:
 			fprintf(stderr, "queue name too long.\n");
 			break;
