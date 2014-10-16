@@ -1,3 +1,4 @@
+PREFIX ?= /usr/local
 bins = qmk qsend qrecv qrm
 
 all: $(bins)
@@ -9,4 +10,10 @@ all: $(bins)
 clean:
 	rm $(bins)
 
-.PHONY: clean
+install: $(bins)
+	install -d $(PREFIX)/bin
+	install -d $(PREFIX)/share/man/
+	install -m0755 $(bins) $(PREFIX)/bin
+	install -m0644 doc/* $(PREFIX)/share/man
+
+.PHONY: clean install
