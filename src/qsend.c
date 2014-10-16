@@ -7,9 +7,13 @@
 #include <mqueue.h>
 
 void printHelp(char *name) {
-	fprintf(stderr, "Usage of %s:\n", name);
-	fprintf(stderr, "\t%s QUEUE\n\n", name);
-	fprintf(stderr, "Send each line of stdin to POSIX message queue 'QUEUE'\n");
+	fprintf(stderr, "Usage of %s:\n\n", name);
+	fprintf(stderr, "    %s [OPTIONS] QUEUE\n\n", name);
+	fprintf(stderr, "  -h:\tprint this help\n");
+	fprintf(stderr, "  -n:\tdon't block if message cannot be sent\n");
+	fprintf(stderr, "  -e:\texit if message cannot be sent (only useful with -n)\n");
+	fprintf(stderr, "  -p N:\tset message priority to N (default: 0)\n");
+	fprintf(stderr, "\nSend each line of stdin to POSIX message queue 'QUEUE'\n");
 }
 
 int main(int argc, char* argv[]) {
