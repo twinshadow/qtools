@@ -7,10 +7,12 @@
 #include <mqueue.h>
 
 void printHelp(char *name) {
-	fprintf(stderr, "Usage of %s:\n", name);
-	fprintf(stderr, "\t%s [-n] QUEUE\n\n", name);
-	fprintf(stderr, "'n' flag makes the utility return an error if QUEUE exists.\n\n");
-	fprintf(stderr, "Make POSIX message queue 'QUEUE'\n");
+	fprintf(stderr, "Usage of %s:\n\n", name);
+	fprintf(stderr, "    %s [OPTIONS] QUEUE\n\n", name);
+	fprintf(stderr, "  -h:\tprint this help\n");
+	fprintf(stderr, "  -n:\treturn an error if QUEUE exists\n");
+	fprintf(stderr, "  -m NUM:\tset message cap to NUM\n");
+	fprintf(stderr, "\nMake POSIX message queue 'QUEUE'\n");
 }
 
 int main(int argc, char* argv[]) {
