@@ -1,0 +1,39 @@
+.TH QSEND 1 "16 Oct 2014"
+.SH NAME
+qsend \- Send message to POSIX message queue
+.SH SYNOPSIS
+.B qsend
+[-h|-n|-e]
+[-p
+.I PRIORITY
+]
+.I QUEUE
+.SH DESCRIPTION
+.B qsend
+is a command to send messages to a POSIX message queue on a Linux system.
+It sends each line of
+.B STDIN
+to the queue
+.I QUEUE.
+The queue name must start with "/", like a path.
+.SS OPTIONS
+.TP
+.B \-h
+Print online help.
+.TP
+.B \-n
+Do not block if message cannot be sent.
+.TP
+.B \-e
+If not blocking and the message cannot be sent, exit with an error instead of
+dropping the message.
+.TP
+.B "\-p \fIPRIORITY\fP"
+Send message with priority of
+.I PRIORITY.
+.SH SEE ALSO
+qrm(1), qmk(1), qrecv(1), mq_overview(7)
+.SH BUGS
+Probably.
+.SH AUTHORS
+Hank Donnay <hank@code42.com>

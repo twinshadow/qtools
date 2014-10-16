@@ -15,7 +15,7 @@ has priorities, is message oriented, and its buffering is managed by the kernel.
 .B qmk
 takes one argument, a queue name
 .I QUEUE.
-It must start with a "/", like a path.
+It must start with "/", like a path.
 .P
 By default,
 .B qmk
@@ -38,7 +38,9 @@ with ability to hold
 messages. See
 .B /proc/sys/fs/mqueue/msg_max
 for the maximum this can be set to. This defaults to 10.
-.SH "SEE ALSO"
+.SH SEE ALSO
 qrm(1), qsend(1), qrecv(1), mq_overview(7)
 .SH BUGS
 Probably.
+.SH AUTHORS
+Hank Donnay <hank@code42.com>
