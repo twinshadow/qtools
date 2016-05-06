@@ -5,7 +5,7 @@ all: $(bins)
 	@
 
 %: src/%.c
-	$(CC) -Werror -Wall -lrt $< -o $@
+	$(CC) $< -o $@ -Werror -Wall -lrt
 
 clean:
 	rm $(bins)
