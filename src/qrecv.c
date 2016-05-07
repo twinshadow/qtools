@@ -42,7 +42,11 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 	mqd_t q = mq_open(queueName, mqFlags);
+#ifdef __linux__
 	if(q == -1){
+#else
+	if(q == NULL){
+#endif
 		switch(errno){
 		case EACCES:
 			fprintf(stderr, "permissions in correct or name invalid.\n");

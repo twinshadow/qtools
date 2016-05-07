@@ -48,7 +48,11 @@ int main(int argc, char* argv[]) {
 	struct mq_attr attr;
 	attr.mq_maxmsg = numMsgs;
 	attr.mq_msgsize = 8192;
+#ifdef __linux__
 	if(mq_open(queueName, mqFlags, 0660, &attr) == -1){
+#else
+	if(mq_open(queueName, mqFlags, 0660, &attr) == NULL){
+#endif
 		fprintf(stderr, "error: %d\n", errno);
 		switch(errno){
 		case EACCES:
